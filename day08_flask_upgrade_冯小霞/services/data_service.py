@@ -54,7 +54,7 @@ def load_dashboard_data(base_dir: Path, selected_category: str = "全部") -> di
 def load_metric_api_data(base_dir: Path) -> list[dict]:
     """返回给JSON接口使用的指标卡数据。"""
     data = load_dashboard_data(base_dir)
-    # TODO 8-4：确保接口返回可被jsonify序列化的普通Python值。
+    #  8-4：确保接口返回可被jsonify序列化的普通Python值。
     data["metrics"] = [dict(row) for row in data["metrics"]]
     return data["metrics"]
 

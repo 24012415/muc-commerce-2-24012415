@@ -91,7 +91,7 @@ def health():
 @app.route("/api/metrics")
 @login_required
 def metrics_api():
-    # TODO 8-1：返回四张指标卡的JSON数据，并保留label、value、note字段。
+    # 8-1：返回四张指标卡的JSON数据，并保留label、value、note字段。
     metric_list = load_metric_api_data(BASE_DIR)
     return jsonify({"ok": True, "metrics": metric_list})
 
@@ -100,14 +100,14 @@ def metrics_api():
 @login_required
 def categories_api():
     category = request.args.get("category", "全部")
-    # TODO 8-2：将category查询参数传给数据服务，返回筛选后的表格记录。
+    #  8-2：将category查询参数传给数据服务，返回筛选后的表格记录。
     filtered_rows = load_category_api_data(BASE_DIR, category)
     return jsonify({"ok": True, "category": category, "rows": filtered_rows})
 
 
 @app.errorhandler(400)
 def bad_request(_error):
-    # TODO 8-3：统一返回JSON错误结构，至少包含ok和error字段。
+    #  8-3：统一返回JSON错误结构，至少包含ok和error字段。
     return jsonify({"ok": False, "error": "请求格式不正确。"}), 400
 
 
